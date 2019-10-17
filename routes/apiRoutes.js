@@ -1,16 +1,24 @@
 var movies = require("../models/movies");
 
-const router = require('express').Router();
-
 module.exports = function(app) {
-  // Get all unwatched
-  router.get("/movies/unwatched", function(req, res) {
-    //
-    movies.unwatched(result => {
-      let handlebar = { movies: result };
-      res.render("unwatched", handlebar);
-    });
+  // Get all examples
+  app.get("/movies", function(req, res) {
+   res.send('get all movies')
   });
+
+  // Create a new example
+  app.post("/movies/watched", function(req, res) {
+    res.send('watched movies')
+  });
+
+  app.post("/movies/unwatched", function(req, res) {
+    res.send('unwatched movies')
+  });
+
+  // Delete an example by id
+  app.delete("/api/examples/:id", function(req, res) {
+   
+
 
   // Create a new example
   router.post("/api/examples", function(req, res) {
@@ -26,5 +34,6 @@ module.exports = function(app) {
     ) {
       res.json(dbExample);
     });
+
   });
 };

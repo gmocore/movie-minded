@@ -2,23 +2,18 @@ var movies = require("../models/movies");
 
 module.exports = function(app) {
   // Load index page
-  app.get("/", function(req, res) {
-      res.render("index", {
-        msg: "Welcome!"
-      });
-    
+
+  app.get("/home", function(req, res) {
+    res.send("this is the home route");
   });
 
-  app.get("/watched", function(req, res) {
-      res.render('watched')
+  app.get("/movies/unwatched", function(req, res) {
+    res.send("this is the unwatched route");
   });
+  
+  app.get("/movies/watched", function(req, res) {
+    res.send("this is the watched route");
 
-  // Load example page and pass in an example by id
-  app.get("/movies/:id", function(req, res) {
-    
-      res.render("example");
- 
-  });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
