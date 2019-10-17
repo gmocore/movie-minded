@@ -2,6 +2,7 @@ var movies = require("../models/movies");
 
 module.exports = function(app) {
   // Load index page
+
   app.get("/home", function(req, res) {
     res.send("this is the home route");
   });
@@ -12,12 +13,7 @@ module.exports = function(app) {
   
   app.get("/movies/watched", function(req, res) {
     res.send("this is the watched route");
-  });
 
-  // Load example page and pass in an example by id
-  app.get("/movies/:id", function(req, res) {
-    //
-  });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
