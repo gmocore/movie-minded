@@ -1,12 +1,4 @@
+const OmdbApiClient = require('open-movie-database-api').OmdbApiClient;
+const client = new OmdbApiClient('trilogy');
 
-
-module.exports = 
-function Movie(movieTitle, watched, summary, actors, releaseYear, rtRating, userRating){
-    this.movieTitle = movieTitle;
-    this.watched = watched;
-    this.summary = summary;
-    this.actors = actors;
-    this.releaseYear = releaseYear;
-    this.rtRating = rtRating;
-    this.userRating = userRating;
-}
+module.exports = client;

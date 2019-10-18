@@ -3,15 +3,15 @@ var movies = require("../models/movies");
 module.exports = function(app) {
 
   app.get("/home", function(req, res) {
-    res.send("this is the home route");
+    res.render("home");
   });
 
   app.get("/movies/unwatched", function(req, res) {
-    res.send("this is the unwatched route");
+    res.render("ondeck");
   });
   
   app.get("/movies/watched", function(req, res) {
-    res.send("this is the watched route");
+    res.render("watched");
   });
 
   // Render 404 page for any unmatched routes
