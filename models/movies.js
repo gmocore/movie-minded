@@ -9,8 +9,8 @@ const movies = {
         orm.allUnwatched('movies', movies => callback(movies));
     },
 
-    add: function(movie_title, callback) {
-        orm.addUnwatched('movies', movie_title, movie => callback(movie));
+    add: function(movie_title, summary, actors, release_year, rt_rating, callback) {
+        orm.addUnwatched('movies', movie_title, summary, actors, release_year, rt_rating, movie => callback(movie));
     },
 
     update: function(id, callback) {
