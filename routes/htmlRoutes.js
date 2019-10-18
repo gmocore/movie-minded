@@ -7,7 +7,13 @@ module.exports = function(app) {
   });
 
   app.get("/movies/unwatched", function(req, res) {
-    res.render("ondeck");
+    movies.unwatched(data => {
+      let hb = {
+        movies: data
+      }
+      res.render("ondeck", hb);
+
+    })
   });
   
   app.get("/movies/watched", function(req, res) {

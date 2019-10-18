@@ -26,7 +26,7 @@ const client = new OmdbApiClient('trilogy');
 module.exports = function(app) {
   app.post("/movies/watched/:id", function(req, res) {
     // res.render('watched')
-    movies.update(req.params.id, (req, res) => res.redirect("/unwatched"));
+    movies.update(req.params.id, (req, res) => res.redirect("/watched"));
   });
 
   app.post("/movies/unwatched", function(req, res) {
@@ -47,8 +47,8 @@ module.exports = function(app) {
         result.Year,
         result.Ratings[1].Value
       );
-      console.log(movie);
-      return res.send(movie)
+      movies.add(movie.movieTitle, movie.summary, movie.actors, movie.releaseYear, movie.rtRating, () => res.redirect("/unwatched"))
+      // return res.send(movie)
     });
   });
 };
