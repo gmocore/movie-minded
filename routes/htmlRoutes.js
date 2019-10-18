@@ -17,7 +17,13 @@ module.exports = function(app) {
   });
   
   app.get("/movies/watched", function(req, res) {
-    res.render("watched");
+    movies.watched(data => {
+      let hb = {
+        movies: data
+      }
+      res.render("watched", hb);
+
+    })
   });
 
   // Render 404 page for any unmatched routes

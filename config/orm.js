@@ -25,13 +25,14 @@ const orm = {
     );
   },
 
-  addUnwatched: function(table, movie_title, summary, actors, release_year, rt_rating, callback) {
+  addUnwatched: function(table, movie_title, poster, summary, actors, release_year, rt_rating, callback) {
     let queryString = "INSERT INTO ?? SET ?";
 
     connection.query(
       queryString,
       [table, { 
         movie_title: movie_title, 
+        poster: poster,
         summary: summary,  
         actors: actors,
         release_year: release_year,

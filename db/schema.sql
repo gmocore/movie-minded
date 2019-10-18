@@ -7,10 +7,11 @@ CREATE TABLE movies
 	id int NOT NULL AUTO_INCREMENT,
 	movie_title varchar(255) NOT NULL,
 	watched BOOLEAN DEFAULT FALSE NOT NULL,
+    poster VARCHAR(255),
     summary VARCHAR(255),
     actors VARCHAR(255),
     release_year INT (5),
-    rt_rating INT (3),
+    rt_rating VARCHAR (4),
     user_rating TINYINT(1),
 	PRIMARY KEY (id)
 );

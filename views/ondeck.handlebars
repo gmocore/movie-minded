@@ -1,8 +1,26 @@
-<h1>on deck</h1>
+<h1 class="text-center">on deck</h1>
 
-<div class="container">
+<div class="container card-columns">
     {{#each movies}}
-        <h1>{{movie_title}}</h1>
-
+    {{#unless watched}}
+    <div class="card" style="width: 18rem;">
+        <img src="{{poster}}" class="card-img-top" alt="poster">
+        <div class="card-body">
+            <h5 class="card-title">{{movie_title}}</h5>
+            <p class="card-text">{{summary}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Actors: {{actors}}</li>
+            <li class="list-group-item">Release Year: {{release_year}}</li>
+            <li class="list-group-item">Rotten Tomatoes Rating: {{rt_rating}}</li>
+        </ul>
+        <div class="card-body">
+            <form action="/movies/watched/{{this.id}}">
+                <a id="{{this.id}}" href="/movies/watched/" class="card-link">Watched</a>
+                <a href="#" class="card-link">Another link</a>
+            </form>
+        </div>
+    </div>
+    {{/unless}}
     {{/each}}
 </div>
