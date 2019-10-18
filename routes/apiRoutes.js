@@ -67,4 +67,8 @@ module.exports = function(app) {
   app.delete(`/movies/unwatched/:id`, (req, res) => {
     movies.delete(req.params.id, () => res.sendStatus(200));
   })
+
+  app.delete(`/movies/watched/:id`, (req, res) => {
+    movies.delete(req.params.id, () => res.sendStatus(200));
+  })
 };
