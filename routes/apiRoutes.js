@@ -57,10 +57,14 @@ module.exports = function(app) {
           movie.actors,
           movie.releaseYear,
           movie.rtRating,
-          () => res.redirect("/movies/unwatched")
+          () => res.sendStatus(200)
         );
         // return res.send(movie)
       });
     }
   });
+
+  app.delete(`/movies/unwatched/:id`, (req, res) => {
+    movies.delete(req.params.id, () => res.sendStatus(200));
+  })
 };

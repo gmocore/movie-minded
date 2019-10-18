@@ -29,3 +29,17 @@ $(".watched").click(e => {
     location.reload();
   });
 });
+
+$(".delete").click(e => {
+  console.log(e.target.id);
+  $.ajax({
+    type: "DELETE",
+    url: `/movies/unwatched/${e.target.id}`,
+    data: {
+      id: e.target.id
+    }
+  }).then(result => {
+    console.log(result);
+    location.reload();
+  });
+});
