@@ -15,12 +15,15 @@
             <li class="list-group-item">Rotten Tomatoes Rating: {{rt_rating}}</li>
         </ul>
         <div class="card-body">
-            <form action="/movies/watched/{{this.id}}">
-                <a id="{{this.id}}" href="/movies/watched/" class="card-link">Watched</a>
+            {{!-- <form action="/movies/watched/{{this.id}}" method="POST"> --}}
+                <button id="{{this.id}}" href="#"  class="card-link watched">Watched</button>
                 <a href="#" class="card-link">Another link</a>
-            </form>
+            {{!-- </form> --}}
         </div>
     </div>
     {{/unless}}
     {{/each}}
 </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="/js/index.js"></script>

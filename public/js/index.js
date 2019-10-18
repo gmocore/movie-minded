@@ -1,14 +1,31 @@
-
-
-$('#submit').click(e => {
+$("#submit").click(e => {
   e.preventDefault();
   $.ajax({
-    type: 'POST',
-    url: '/test',
+    type: "POST",
+    url: "/test",
     data: {
-      movie_title:$('#add-movie').val().trim()
+      movie_title: $("#add-movie")
+        .val()
+        .trim()
     }
   })
-  .then(result => console.log(result))
-  .catch(error => console.log(error))
+    .then(result => {
+      console.log(result);
+      $("#add-movie").val("");
+    })
+    .catch(error => console.log(error));
+});
+
+$(".watched").click(e => {
+  console.log(e.target.id);
+  $.ajax({
+    type: "POST",
+    url: `/movies/watched/${e.target.id}`,
+    data: {
+      id: e.target.id
+    }
+  }).then(result => {
+    console.log(result);
+    location.reload();
+  });
 });

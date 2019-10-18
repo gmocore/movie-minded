@@ -2,6 +2,8 @@ var movies = require("../models/movies");
 
 module.exports = function(app) {
 
+  app.get('/', (req,res) => res.redirect('/home'));
+
   app.get("/home", function(req, res) {
     res.render("home");
   });
