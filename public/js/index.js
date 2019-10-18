@@ -12,6 +12,11 @@ $("#submit").click(e => {
     .then(result => {
       console.log(result);
       $("#add-movie").val("");
+      $('.added-movie-text').text('movie added on deck')
+      setTimeout(() => {
+      $('.added-movie-text').text('')
+        
+      }, 2000);
     })
     .catch(error => console.log(error));
 });
@@ -30,6 +35,7 @@ $("#nav-search-btn").click(e => {
     .then(result => {
       console.log(result);
       $("#nav-search").val("");
+      
     })
     .catch(error => console.log(error));
 });
