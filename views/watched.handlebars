@@ -15,12 +15,12 @@
             <li class="list-group-item">Rotten Tomatoes Rating: {{rt_rating}}</li>
         </ul>
         <div class="card-body">
-            <form action="/movies/unwatched/{{this.id}}">
-                <a id="{{this.id}}" href="/movies/unwatched/" class="card-link">Unwatched</a>
-                <a href="#" class="card-link">Another link</a>
-            </form>
+            <button id="{{this.id}}" class="btn btn-danger delete-watched">Delete</button>
         </div>
     </div>
     {{/if}}
     {{/each}}
 </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="/js/index.js"></script>

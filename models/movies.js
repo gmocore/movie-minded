@@ -17,7 +17,7 @@ const movies = {
         orm.updateWatched('movies', id, movie => callback(movie));
     },
 
-    delete: function(callback) {
+    delete: function(id, callback) {
         orm.deleteMovie('movies', id, movie => callback(movie));
     }
 }
