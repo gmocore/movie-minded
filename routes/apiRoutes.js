@@ -1,9 +1,7 @@
-var movies = require("../models/movies");
-var movieTemplate = require("../models/omdb");
-var omdb = require("omdb-client");
+const movies = require("../models/movies");
 
 const OmdbApiClient = require("open-movie-database-api").OmdbApiClient;
-const client = new OmdbApiClient("trilogy");
+const client = new OmdbApiClient(process.env.OMDB_API_KEY);
 
 function Movie(
   movieTitle,
@@ -48,7 +46,7 @@ module.exports = function(app) {
           result.Plot,
           result.Actors,
           result.Year,
-          result.Ratings[1].Value
+          result.Ratings[1] ? result.Ratings[1].Value : undefined
         );
         movies.add(
           movie.movieTitle,

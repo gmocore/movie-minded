@@ -12,7 +12,7 @@ CREATE TABLE movies
     actors VARCHAR(255),
     release_year INT (5),
     rt_rating VARCHAR (4),
-    user_rating TINYINT(1),
+    user_rating INT(1),
 	PRIMARY KEY (id)
 );
 
