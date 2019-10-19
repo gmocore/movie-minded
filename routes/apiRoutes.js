@@ -41,6 +41,7 @@ module.exports = function(app) {
     if (req.body) {
       client.getByTitle(req.body.movie_title).then(result => {
         console.log(result.Title);
+
         let movie = new Movie(
           result.Title,
           false,
@@ -48,7 +49,7 @@ module.exports = function(app) {
           result.Plot,
           result.Actors,
           result.Year,
-          result.Ratings[1].Value
+          result.Ratings[1] ? result.Ratings[1].Value : undefined
         );
         movies.add(
           movie.movieTitle,
