@@ -19,20 +19,17 @@ module.exports = function(app) {
 
   app.post(
     "/test",
-    
-      check("movie_title", "enter a movie title")
-        .not()
-        .isEmpty()
-    ,
-    function(req, res) {
 
+    check("movie_title", "enter a movie title")
+      .not()
+      .isEmpty(),
+    function(req, res) {
       const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
       } else {
         client.getByTitle(req.body.movie_title).then(result => {
-          // console.log(result.Title);
           let movie = new Movie(
             result.Title,
             false,
@@ -56,11 +53,11 @@ module.exports = function(app) {
     }
   );
 
-  app.delete(`/movies/unwatched/:id`, (req, res) => {
+  app.delete("/movies/unwatched/:id", (req, res) => {
     movies.delete(req.params.id, () => res.sendStatus(200));
   });
 
-  app.delete(`/movies/watched/:id`, (req, res) => {
+  app.delete("/movies/watched/:id", (req, res) => {
     movies.delete(req.params.id, () => res.sendStatus(200));
   });
 };

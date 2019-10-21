@@ -1,8 +1,8 @@
-const connection = require("../config/connection");
+const connection = require('../config/connection');
 
 const orm = {
   allWatched: function(table, callback) {
-    let queryString = "SELECT * FROM ?? WHERE ?";
+    let queryString = 'SELECT * FROM ?? WHERE ?';
 
     connection.query(queryString, [table, { watched: true }], (err, result) => {
       if (err) throw err;
@@ -12,7 +12,7 @@ const orm = {
   },
 
   allUnwatched: function(table, callback) {
-    let queryString = "SELECT * FROM ?? WHERE ?";
+    let queryString = 'SELECT * FROM ?? WHERE ?';
 
     connection.query(
       queryString,
@@ -26,7 +26,7 @@ const orm = {
   },
 
   addUnwatched: function(table, movie_title, poster, summary, actors, release_year, rt_rating, callback) {
-    let queryString = "INSERT INTO ?? SET ?";
+    let queryString = 'INSERT INTO ?? SET ?';
 
     connection.query(
       queryString,
@@ -47,7 +47,7 @@ const orm = {
     );
   },
   updateWatched: function(table, id, callback) {
-    let queryString = "UPDATE ?? SET ? WHERE id = ?";
+    let queryString = 'UPDATE ?? SET ? WHERE id = ?';
 
     connection.query(
       queryString,
@@ -61,7 +61,7 @@ const orm = {
   },
 
   deleteMovie: function(table, id, callback) {
-    let queryString = "DELETE FROM ?? WHERE id = ?";
+    let queryString = 'DELETE FROM ?? WHERE id = ?';
 
     connection.query(queryString, [table, id], (err, result) => {
       if (err) throw err;
