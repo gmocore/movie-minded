@@ -35,7 +35,7 @@ $("#nav-search-btn").click(e => {
     .then(result => {
       console.log(result);
       $("#nav-search").val("");
-      
+      location.assign('/movies/unwatched');
     })
     .catch(error => console.log(error));
 });

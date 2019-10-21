@@ -2,6 +2,41 @@
   line-height: 2.5;
 }
 
+a {
+  color: inherit;
+}
+
+
+
+body {
+  background-image: url('./pTodGzK7c.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.name-header {
+  letter-spacing: 30px;
+  font-family: "Montserrat Subrayada", sans-serif;
+  background-color: #c0392b;
+  color: #f1c40f;
+}
+
+.navbar {
+  background-color: #c0392b;
+  color: #f1c40f;
+  border-bottom: #f1c40f 2px solid;
+}
+
+
+
+.title {
+  font-family: "Montserrat Subrayada", sans-serif;
+  font-family: "Comfortaa", cursive;
+  color: #f1c40f;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+}
+
 #add-movie {
   width: 100%;
 }
@@ -9,4 +44,12 @@
 .search-container {
   display: flex;
   justify-content: center;
+}
+
+.card {
+  border: #f1c40f 2px solid;
+}
+
+.list-group-item {
+  border: #f1c40f 1px solid;
 }
