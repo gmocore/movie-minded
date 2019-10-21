@@ -12,13 +12,24 @@ $("#submit").click(e => {
     .then(result => {
       console.log(result);
       $("#add-movie").val("");
-      $('.added-movie-text').text('movie added on deck')
+      $('#error-alert').removeClass('alert-warning');
+      $('#error-alert').addClass('alert-success show')
+      $('.alert-message').text(`${result.movieTitle} added to on deck`);
       setTimeout(() => {
-      $('.added-movie-text').text('')
-        
+        $('#error-alert').removeClass('show alert-success');
       }, 2000);
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      console.log(error.responseJSON.errors[0].msg);
+      if (error.status === 422) {
+        $('.alert-message').text(error.responseJSON.errors[0].msg)
+        $('#error-alert').addClass('show alert-warning');
+        setTimeout(() => {
+        $('#error-alert').removeClass('show');
+        
+        }, 3000);
+      }
+    });
 });
 
 $("#nav-search-btn").click(e => {
@@ -35,9 +46,18 @@ $("#nav-search-btn").click(e => {
     .then(result => {
       console.log(result);
       $("#nav-search").val("");
-      
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      console.log(error);
+      if (error.status === 422) {
+        $('.alert-message').text(error.responseJSON.errors[0].msg)
+        $('#error-alert').addClass('show alert-warning');
+        setTimeout(() => {
+        $('#error-alert').removeClass('show');
+        
+        }, 3000);
+      }
+    });
 });
 
 $(".watched").click(e => {
