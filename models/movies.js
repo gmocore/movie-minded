@@ -20,7 +20,7 @@ const movies = {
     delete: function(id, callback) {
         orm.deleteMovie('movies', id, movie => callback(movie));
     }
-}
+};
 
 module.exports = movies;
 
