@@ -68,6 +68,7 @@ module.exports = function(app) {
     // post route to view movie trailer using api
      movieTrailer(req.body.title)
      .then(trailer => res.json(trailer))
+     // eslint-disable-next-line no-console
      .catch(error => console.log(error));
   });
 

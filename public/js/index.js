@@ -34,7 +34,7 @@ $('#submit').click(e => {
 $('#nav-search-btn').click(async e => {
   e.preventDefault();
   try {
-    let result = await $.ajax({
+    await $.ajax({
       type: 'POST',
       url: '/test',
       data: {
@@ -43,7 +43,6 @@ $('#nav-search-btn').click(async e => {
           .trim()
       }
     });
-    console.log(result);
     $('#nav-search').val('');
     location.assign('/movies/unwatched');
   } catch (error) {
@@ -64,7 +63,7 @@ $('.watched').click(e => {
     data: {
       id: e.target.id
     }
-  }).then(result => {
+  }).then(() => {
     location.reload();
   });
 });
@@ -76,22 +75,25 @@ $('.delete').click(e => {
     data: {
       id: e.target.id
     }
-  }).then(result => {
+  }).then(() => {
     location.reload();
   });
 });
 
-// $('.trailer').click(e => {
-//   $.ajax({
-//     type: 'POST',
-//     url: '/movies/trailer/',
-//     data: {
-//       title: e.target.dataset.title
-//     }
-//   }).then(result => {
-//     // location.assign(result)
-//     // getTrailerId(result);
-//     window.open(result, '_blank');
-//   });
-// });
+$('.trailer').click(e => {
+  $.ajax({
+    type: 'POST',
+    url: '/movies/trailer/',
+    data: {
+      title: e.target.dataset.title
+    }
+  }).then(result => {
+    $('.embed-responsive-item').attr('src', `https://www.youtube.com/embed/${result.slice(32)}`);
+  });
+});
+
+$('.close').click(() => {
+  $('.embed-responsive-item').attr('src', '');
+
+});
 
