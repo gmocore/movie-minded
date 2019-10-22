@@ -54,11 +54,12 @@ module.exports = function(app) {
     }
   );
 
-  app.post('/movies/trailer', async function(req, res) {
+  app.post('/movies/trailer',  function(req, res) {
     // res.render('ondeck')
      // eslint-disable-next-line no-console
-     let trailer = await movieTrailer(req.body.title);
-     res.json(trailer);
+     movieTrailer(req.body.title)
+     .then(trailer => res.json(trailer))
+     .catch(error => console.log(error));
   });
 
   app.delete('/movies/unwatched/:id', (req, res) => {

@@ -15,11 +15,13 @@
                 <li class="list-group-item bg-dark"><strong>Release Year: </strong>{{release_year}}</li>
                 <li class="list-group-item bg-dark"><strong>Rotten Tomatoes: </strong>{{rt_rating}}</li>
             </ul>
-            <div class="card-body bg-dark">
+            <div class="card-body bg-dark d-md-flex-column align-items-center">
                 {{!-- <form action="/movies/watched/{{this.id}}" method="POST"> --}}
+
                 <button id="{{this.id}}" href="#" class="card-link watched btn btn-warning">Watched</button>
                 <button id="{{this.id}}" href="#" class="card-link delete btn btn-danger">Delete</button>
                 <button data-title="{{this.movie_title}}" href="#" class="card-link trailer btn btn-light">Trailer</button>
+             
 
                 {{!-- </form> --}}
             </div>

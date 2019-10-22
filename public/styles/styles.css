@@ -4,6 +4,7 @@
 
 a {
   color: inherit;
+  transition: 1s;
 }
 
 a:hover {
@@ -11,9 +12,10 @@ a:hover {
 }
 
 body {
+  
   background-image: url('./pTodGzK7c.jpg');
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat
 }
 
 .name-header {
@@ -37,15 +39,35 @@ body {
   color: #f1c40f;
   text-transform: uppercase;
   letter-spacing: 10px;
+  
+}
+
+
+.search-header {
+  font-weight: bold;
 }
 
 #add-movie {
   width: 100%;
+  outline: none;
+  box-shadow: 0 .5rem 1rem rgba(255,193,7,.5)
+}
+
+#submit:hover {
+  box-shadow: 0 .5rem 1rem rgba(255,193,7,.5);
 }
 
 .search-container {
   display: flex;
   justify-content: center;
+}
+
+.text-warning {
+  outline:none;
+}
+
+.navbar-toggler-icon {
+  outline: none;
 }
 
 .card {
