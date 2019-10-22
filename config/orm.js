@@ -1,6 +1,8 @@
 const connection = require('../config/connection');
 
+//methods to query mysql
 const orm = {
+  // get all watched movies
   allWatched: function(table, callback) {
     let queryString = 'SELECT * FROM ?? WHERE ?';
 
@@ -10,7 +12,7 @@ const orm = {
       callback(result);
     });
   },
-
+  // get all unwatched movies
   allUnwatched: function(table, callback) {
     let queryString = 'SELECT * FROM ?? WHERE ?';
 
@@ -25,6 +27,7 @@ const orm = {
     );
   },
 
+  // add new movie to unwatched, and store data from api
   addUnwatched: function(table, movie_title, poster, summary, actors, release_year, rt_rating, callback) {
     let queryString = 'INSERT INTO ?? SET ?';
 
@@ -46,6 +49,7 @@ const orm = {
       }
     );
   },
+  // update watched status of movie
   updateWatched: function(table, id, callback) {
     let queryString = 'UPDATE ?? SET ? WHERE id = ?';
 
@@ -60,6 +64,7 @@ const orm = {
     );
   },
 
+  // delete movie from db
   deleteMovie: function(table, id, callback) {
     let queryString = 'DELETE FROM ?? WHERE id = ?';
 
@@ -71,4 +76,5 @@ const orm = {
   }
 };
 
+//export to use with models
 module.exports = orm;

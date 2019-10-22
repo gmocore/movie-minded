@@ -2,10 +2,11 @@
 const mysql = require("mysql");
 require('dotenv').config();
 let connection;
-
+// jaws connection
 if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
+  // local connection
    connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
@@ -24,5 +25,5 @@ connection.connect(function(err) {
   console.log("connected as id " + connection.threadId);
 });
 
-// Export connection for our ORM to use.
+// Export connection for ORM to use.
 module.exports = connection;

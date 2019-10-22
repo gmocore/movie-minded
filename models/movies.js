@@ -1,4 +1,6 @@
 const orm = require('../config/orm');
+    
+// used in conjuntion with orm to update information stored in db
 
 const movies = {
     watched: function(callback) {

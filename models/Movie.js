@@ -1,3 +1,5 @@
+// constructor to be used in apiRoutes
+
 function Movie(
     movieTitle,
     watched,
