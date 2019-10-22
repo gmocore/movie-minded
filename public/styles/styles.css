@@ -77,3 +77,11 @@ body {
 .list-group-item {
   border: #f1c40f 1px solid;
 }
+
+.close {
+  color: #f1c40f;
+}
+
+.close:hover {
+  color: #fff;
+}

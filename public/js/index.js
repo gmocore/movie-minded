@@ -81,17 +81,17 @@ $('.delete').click(e => {
   });
 });
 
-$('.trailer').click(e => {
-  $.ajax({
-    type: 'POST',
-    url: '/movies/trailer/',
-    data: {
-      title: e.target.dataset.title
-    }
-  }).then(result => {
-    // location.assign(result)
-    // getTrailerId(result);
-    window.open(result, '_blank');
-  });
-});
+// $('.trailer').click(e => {
+//   $.ajax({
+//     type: 'POST',
+//     url: '/movies/trailer/',
+//     data: {
+//       title: e.target.dataset.title
+//     }
+//   }).then(result => {
+//     // location.assign(result)
+//     // getTrailerId(result);
+//     window.open(result, '_blank');
+//   });
+// });
 
