@@ -42,7 +42,10 @@ $('#nav-search-btn').click(e => {
     }
   })
     .then(result => {
-      $('#nav-search').val('');
+      console.log(result);
+      $("#nav-search").val("");
+      location.assign('/movies/unwatched');
+
     })
     .catch(error => {
       if (error.status === 422) {
