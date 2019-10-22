@@ -1,26 +1,27 @@
-const movies = require("../models/movies");
-const Movie = require("../models/Movie");
-const { check, validationResult } = require("express-validator");
+const movies = require('../models/movies');
+const Movie = require('../models/Movie');
+const movieTrailer = require('movie-trailer');
+const { check, validationResult } = require('express-validator');
 
-const OmdbApiClient = require("open-movie-database-api").OmdbApiClient;
+const OmdbApiClient = require('open-movie-database-api').OmdbApiClient;
 const client = new OmdbApiClient(process.env.OMDB_API_KEY);
 
 module.exports = function(app) {
-  app.post("/movies/watched/:id", function(req, res) {
+  app.post('/movies/watched/:id', function(req, res) {
     // res.render('watched')
     console.log(req.params.id);
-    movies.update(req.params.id, result => res.redirect("/movies/unwatched"));
+    movies.update(req.params.id, result => res.redirect('/movies/unwatched'));
   });
 
-  app.post("/movies/unwatched", function(req, res) {
+  app.post('/movies/unwatched', function(req, res) {
     // res.render('ondeck')
-    movies.add(req.body.movie_title, () => res.redirect("/unwatched"));
+    movies.add(req.body.movie_title, () => res.redirect('/unwatched'));
   });
 
   app.post(
-    "/test",
+    '/test',
 
-    check("movie_title", "enter a movie title")
+    check('movie_title', 'enter a movie title')
       .not()
       .isEmpty(),
     function(req, res) {
@@ -53,11 +54,18 @@ module.exports = function(app) {
     }
   );
 
-  app.delete("/movies/unwatched/:id", (req, res) => {
+  app.post('/movies/trailer', async function(req, res) {
+    // res.render('ondeck')
+     // eslint-disable-next-line no-console
+     let trailer = await movieTrailer(req.body.title);
+     res.json(trailer);
+  });
+
+  app.delete('/movies/unwatched/:id', (req, res) => {
     movies.delete(req.params.id, () => res.sendStatus(200));
   });
 
-  app.delete("/movies/watched/:id", (req, res) => {
+  app.delete('/movies/watched/:id', (req, res) => {
     movies.delete(req.params.id, () => res.sendStatus(200));
   });
 };

@@ -6,7 +6,9 @@ a {
   color: inherit;
 }
 
-
+a:hover {
+  color: #fff;
+}
 
 body {
   background-image: url('./pTodGzK7c.jpg');

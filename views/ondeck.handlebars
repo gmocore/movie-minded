@@ -2,32 +2,38 @@
 
 <div class="container">
     <div class="card-columns">
-    {{#each movies}}
-    {{#unless watched}}
-    <div class="card shadow bg-dark text-warning">
-        <img src="{{poster}}" class="card-img-top" alt="poster">
-        <div class="card-body ">
-            <h5 class="card-title">{{movie_title}}</h5>
-            <p class="card-text">{{summary}}</p>
+        {{#each movies}}
+        {{#unless watched}}
+        <div class="card shadow bg-dark text-warning">
+            <img src="{{poster}}" class="card-img-top" alt="poster">
+            <div class="card-body ">
+                <h5 class="card-title">{{movie_title}}</h5>
+                <p class="card-text">{{summary}}</p>
+            </div>
+            <ul class="list-group list-group-flush bg-dark">
+                <li class="list-group-item bg-dark"><strong>Actors:</strong> {{actors}}</li>
+                <li class="list-group-item bg-dark"><strong>Release Year: </strong>{{release_year}}</li>
+                <li class="list-group-item bg-dark"><strong>Rotten Tomatoes: </strong>{{rt_rating}}</li>
+            </ul>
+            <div class="card-body bg-dark">
+                {{!-- <form action="/movies/watched/{{this.id}}" method="POST"> --}}
+                <button id="{{this.id}}" href="#" class="card-link watched btn btn-warning">Watched</button>
+                <button id="{{this.id}}" href="#" class="card-link delete btn btn-danger">Delete</button>
+                <button data-title="{{this.movie_title}}" href="#" class="card-link trailer btn btn-light">Trailer</button>
+
+                {{!-- </form> --}}
+            </div>
+
         </div>
-        <ul class="list-group list-group-flush bg-dark">
-            <li class="list-group-item bg-dark"><strong>Actors:</strong> {{actors}}</li>
-            <li class="list-group-item bg-dark"><strong>Release Year: </strong>{{release_year}}</li>
-            <li class="list-group-item bg-dark"><strong>Rotten Tomatoes: </strong>{{rt_rating}}</li>
-        </ul>
-        <div class="card-body bg-dark">
-            {{!-- <form action="/movies/watched/{{this.id}}" method="POST"> --}}
-                <button id="{{this.id}}" href="#"  class="card-link watched btn btn-warning">Watched</button>
-                <button id="{{this.id}}" href="#"  class="card-link delete btn btn-danger">Delete</button>
-                
-            {{!-- </form> --}}
-        </div>
+        {{/unless}}
+        {{/each}}
     </div>
-    {{/unless}}
-    {{/each}}
 </div>
 
-    </div>
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+</div>
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="/js/index.js"></script>
