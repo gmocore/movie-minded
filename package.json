@@ -20,7 +20,6 @@
     "movie-trailer": "^2.0.4",
     "mysql": "^2.17.1",
     "mysql2": "^1.6.5",
-    "omdb-client": "^2.0.0",
     "open-movie-database-api": "^1.1.2"
   },
   "devDependencies": {
