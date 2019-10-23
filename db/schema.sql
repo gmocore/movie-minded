@@ -13,7 +13,9 @@ CREATE TABLE movies
     release_year INT (5),
     rt_rating VARCHAR (4),
     user_rating INT(1),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	PRIMARY KEY (id)
 );
+
 
 
