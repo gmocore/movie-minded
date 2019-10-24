@@ -49,9 +49,9 @@ module.exports = function(app) {
             result.Poster,
             result.Plot,
             result.Actors,
-            result.Year,
-            result.Ratings[1] ? result.Ratings[1].Value : undefined
-            )
+            result.Year
+            // result.Ratings[1] ? result.Ratings[1].Value : undefined
+            );
 
             movies.add(
               movie.movieTitle,
@@ -61,7 +61,7 @@ module.exports = function(app) {
               movie.releaseYear,
               movie.rtRating,
               () => res.json(movie)
-            )
+            );
             // add constructed movie object and send to browser
               return Promise.resolve(result)
           })
