@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const movies = require('../models/movies');
 const Movie = require('../models/Movie');
 // movie trailer api
@@ -32,7 +33,7 @@ module.exports = function(app) {
       // validator error function
       const errors = validationResult(req);
 
-      // if validator has error, return a 422 to the browsser
+      // if validator has error, return a 422 to the browser
       if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
       } else {
@@ -48,8 +49,9 @@ module.exports = function(app) {
             result.Actors,
             result.Year,
             result.Ratings[1] ? result.Ratings[1].Value : undefined
-          );
-          // add contructed movie object and send to browser
+          )
+          .catch(error => console.log(error));
+          // add constructed movie object and send to browser
           movies.add(
             movie.movieTitle,
             movie.poster,
