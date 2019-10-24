@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+require('dotenv').config();
 const movies = require('../models/movies');
 const Movie = require('../models/Movie');
 // movie trailer api
