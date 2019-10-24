@@ -26,6 +26,7 @@ require('./routes/htmlRoutes')(app);
 
 
   app.listen(PORT, function() {
+    // eslint-disable-next-line no-console
     console.log(
       '==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.',
       PORT,

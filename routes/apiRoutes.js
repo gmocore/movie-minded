@@ -39,7 +39,8 @@ module.exports = function(app) {
         return res.status(422).json({ errors: errors.array() });
       } else {
         //if no errors, submit request
-        client.getByTitle(req.body.movie_title).then(result => {
+        client.getByTitle(req.body.movie_title)
+          .then(result => {
 
           //construct movie object using imported constructor
           let movie = new Movie(
@@ -50,21 +51,24 @@ module.exports = function(app) {
             result.Actors,
             result.Year,
             result.Ratings[1] ? result.Ratings[1].Value : undefined
-          )
-          .catch(error => console.log(error));
-          // add constructed movie object and send to browser
-          movies.add(
-            movie.movieTitle,
-            movie.poster,
-            movie.summary,
-            movie.actors,
-            movie.releaseYear,
-            movie.rtRating,
-            () => res.json(movie)
-          );
-        });
+            )
+
+            movies.add(
+              movie.movieTitle,
+              movie.poster,
+              movie.summary,
+              movie.actors,
+              movie.releaseYear,
+              movie.rtRating,
+              () => res.json(movie)
+            )
+            // add constructed movie object and send to browser
+              return Promise.resolve(result)
+          })
+          .catch(error => {
+            console.log(error)
+            return Promise.reject(error);
       }
-    }
   );
 
   app.post('/movies/trailer',  function(req, res) {
