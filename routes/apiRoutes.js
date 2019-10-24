@@ -9,7 +9,7 @@ const { check, validationResult } = require('express-validator');
 
 // OMDB api creds
 const OmdbApiClient = require('open-movie-database-api').OmdbApiClient;
-const client = new OmdbApiClient('trilogy');
+const client = new OmdbApiClient(process.env.OMDB_API_KEY);
 
 module.exports = function(app) {
   // post route to update watched status of movie
@@ -49,8 +49,8 @@ module.exports = function(app) {
             result.Poster,
             result.Plot,
             result.Actors,
-            result.Year
-            // result.Ratings[1] ? result.Ratings[1].Value : undefined
+            result.Year,
+            result.Ratings[1] ? result.Ratings[1].Value : undefined
             );
 
             movies.add(
