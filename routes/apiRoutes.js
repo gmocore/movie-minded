@@ -65,11 +65,13 @@ module.exports = function(app) {
             // add constructed movie object and send to browser
               return Promise.resolve(result)
           })
+          
           .catch(error => {
-            console.log(error)
+            console.log(error);
             return Promise.reject(error);
-      }
-  );
+      });
+    }
+  });
 
   app.post('/movies/trailer',  function(req, res) {
     // post route to view movie trailer using api
