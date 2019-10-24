@@ -9,7 +9,7 @@ const { check, validationResult } = require('express-validator');
 
 // OMDB api creds
 const OmdbApiClient = require('open-movie-database-api').OmdbApiClient;
-const client = new OmdbApiClient(process.env.OMDB_API_KEY);
+const client = new OmdbApiClient('trilogy');
 
 module.exports = function(app) {
   // post route to update watched status of movie
@@ -63,7 +63,7 @@ module.exports = function(app) {
               () => res.json(movie)
             );
             // add constructed movie object and send to browser
-              return Promise.resolve(result)
+              return Promise.resolve(result);
           })
           
           .catch(error => {
