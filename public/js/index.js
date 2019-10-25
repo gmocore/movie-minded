@@ -24,6 +24,13 @@ $('#submit').click(async e => {
       setTimeout(() => {
         $('#error-alert').removeClass('show');
       }, 3000);
+    } else if (error.status === 400) {
+      $('.alert-message').text(error.responseJSON.Error);
+      $('#error-alert').addClass('show alert-warning');
+      $('#add-movie').val('');
+      setTimeout(() => {
+        $('#error-alert').removeClass('show');
+      }, 3000);
     }
   }
 });
