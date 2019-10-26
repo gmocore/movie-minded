@@ -29,7 +29,7 @@ const orm = {
 
   // add new movie to unwatched, and store data from api
   addUnwatched: function(table, movie_title, poster, summary, actors, release_year, rt_rating, callback) {
-    let queryString = 'INSERT INTO ?? SET ?';
+    let queryString = `INSERT INTO ?? SET ? ON DUPLICATE KEY UPDATE (movie_title = ${movie_title})`;
 
     connection.query(
       queryString,
@@ -43,7 +43,9 @@ const orm = {
 
       }],
       (err, result) => {
-        if (err) throw err;
+        if (err.errno === 1062) {
+          return err.errno;
+        }
 
         callback(result);
       }

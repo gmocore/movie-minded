@@ -31,6 +31,8 @@ $('#submit').click(async e => {
       setTimeout(() => {
         $('#error-alert').removeClass('show');
       }, 3000);
+    } else {
+      console.log(error);
     }
   }
 });
