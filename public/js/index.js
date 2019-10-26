@@ -10,6 +10,7 @@ $('#submit').click(async e => {
           .trim()
       }
     });
+
     $('#add-movie').val('');
     $('#error-alert').removeClass('alert-warning');
     $('#error-alert').addClass('alert-success show');
@@ -31,9 +32,7 @@ $('#submit').click(async e => {
       setTimeout(() => {
         $('#error-alert').removeClass('show');
       }, 3000);
-    } else {
-      console.log(error);
-    }
+    } 
   }
 });
 
@@ -58,7 +57,14 @@ $('#nav-search-btn').click(async e => {
       setTimeout(() => {
         $('#error-alert').removeClass('show');
       }, 3000);
-    }
+    } else if (error.status === 400) {
+      $('.alert-message').text(error.responseJSON.Error);
+      $('#error-alert').addClass('show alert-warning');
+      $('#add-movie').val('');
+      setTimeout(() => {
+        $('#error-alert').removeClass('show');
+      }, 3000);
+    } 
   }
 });
 
