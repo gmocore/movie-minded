@@ -19,7 +19,6 @@ CREATE TABLE movies
 	PRIMARY KEY (id)
 );
 
-ALTER TABLE movies ADD UNIQUE (movie_title); 
 
 
 
